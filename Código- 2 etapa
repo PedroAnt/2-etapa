@@ -1,0 +1,40 @@
+void setup()
+{
+  pinMode(12, INPUT);
+  pinMode(11, INPUT);
+  pinMode(10, INPUT);
+  pinMode(9, INPUT);
+  
+  pinMode(8, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(2, OUTPUT);
+}
+
+void loop()
+{
+  bool A = digitalRead(9);
+  bool B = digitalRead(10);
+  bool C = digitalRead(11);
+  bool D = digitalRead(12);
+
+  bool a = !((!A && !B && !D) || (!A && C && D) || (!A && B && D) || (A && !C && !D) || (A && !B && !C) || (A && B && C)||(A && C && !D));
+  bool b = !((!A && !C && !D) || (A && !C && D) || (!A && !B) || (!A && C && D) || (A && !B && !D)); 
+  bool c = !((!A && B) || (A && !B) || (!C && D) || (!A && !C)|| (!A && D));
+  bool d = !((A && !C) || (!A && !B && !D) || (B && !C && D) || (!B && C && D)|| (B && C && !D));
+  bool e = !((A && B) || (C && !D) || (A && C && D) || (!B && !C && !D));
+  bool f = !((!C && !D) || (A && C) || (!A && B && !C) || (A && !B && !C) || ( B && C && !D));
+  bool g = !((A && !B) || (C && !D) || (A && D)|| (!A && B && !C)|| (!A && !B && C)); 
+    
+  
+ digitalWrite(8, g);
+ digitalWrite(7, f);
+ digitalWrite(6, e);
+ digitalWrite(5, d);
+ digitalWrite(4, c);
+ digitalWrite(3, b);
+ digitalWrite(2, a);
+}
